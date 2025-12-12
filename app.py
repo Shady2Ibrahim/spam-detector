@@ -14,12 +14,16 @@ def index():
 def predict():
     email_text = request.form.get('email')
 
+
     if not email_text:
         return jsonify({'result': 'error', 'message': 'No email provided'}), 400
+    
+    if len(email_text) < 100:
+       return jsonify({'result': "spam"})
 
     email_vector = vectorizer.transform([email_text])
     prediction = model.predict(email_vector)[0]
-    result = "spam" if prediction == 1 else "not spam"
+    result =  prediction 
 
     return jsonify({'result': result})
 

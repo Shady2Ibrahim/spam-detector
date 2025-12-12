@@ -264,7 +264,14 @@ document.getElementById('check-btn').addEventListener('click', function() {
     const resultContainer = document.getElementById('result-container');
     
     if (!emailContent) {
-        alert('Please enter some email content to check');
+        //alert('Please enter some email content to check');
+            const resultText = document.getElementById('result-text');
+            const resultIcon = document.getElementById('result-icon');
+            const resultDesc = document.getElementById('result-description');
+            resultContainer.className = 'result-container spam show';
+            resultText.textContent = 'OOPs';
+            resultIcon.className = 'fas fa-exclamation-triangle';
+            resultDesc.textContent = 'Please enter some email content to check';
         return;
     }
     
